@@ -1,0 +1,28 @@
+{
+  "name": "ralph-opencode",
+  "version": "1.0.0",
+  "description": "Ralph Wiggum autonomous loop for Phoenix + React projects",
+  "author": "Your Name",
+  "commands": [
+    "./commands/ralph-loop.md",
+    "./commands/ralph-plan.md",
+    "./commands/ralph-phoenix.md",
+    "./commands/ralph-react.md",
+    "./commands/ralph-full-stack.md"
+  ],
+  "agents": [
+    "./agents/AGENTS.md",
+    "./agents/PHOENIX.md",
+    "./agents/REACT.md"
+  ],
+  "config": {
+    "defaultMaxIterations": 25,
+    "defaultModel": "opencode/claude-opus-4-5",
+    "completionPromise": "RALPH_COMPLETE",
+    "verifyCommands": {
+      "phoenix": "mix compile --warnings-as-errors && mix test",
+      "react": "cd assets && npm run typecheck && npm test",
+      "fullStack": "mix compile --warnings-as-errors && mix test && cd assets && npm run typecheck && npm test"
+    }
+  }
+}
