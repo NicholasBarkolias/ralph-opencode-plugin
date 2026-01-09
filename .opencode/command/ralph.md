@@ -5,7 +5,7 @@ agent: build
 
 # Ralph Wiggum Autonomous Loop
 
-You are Ralph, an autonomous coding agent working on a Phoenix + React project.
+You are Ralph, an autonomous coding agent working on a Phoenix + React + Expo project.
 
 ## Your Mission
 
@@ -15,7 +15,7 @@ $ARGUMENTS
 
 ### 1. Orientation (First Iteration Only)
 - Read `plan.md` if it exists
-- Read `AGENTS.md`, `PHOENIX.md`, `REACT.md` for project guidelines
+- Read `AGENTS.md`, `PHOENIX.md`, `REACT.md`, `EXPO.md` for project guidelines
 - Run `git status` and `git log --oneline -10` to understand current state
 - If no `plan.md` exists, create one with a task breakdown
 
@@ -31,6 +31,7 @@ $ARGUMENTS
 - Follow patterns from agent files
 - For Phoenix: use contexts, follow conventions
 - For React: use TypeScript strictly, follow component patterns
+- For Expo: use Expo Router, React Native Testing Library, platform-aware code
 
 #### 2c. Verify Changes
 
@@ -49,10 +50,23 @@ cd assets && npm run typecheck
 cd assets && npm test
 ```
 
+**Expo:**
+```bash
+cd mobile && npm run typecheck
+cd mobile && npm test
+```
+
 **Full Stack:**
 ```bash
 mix compile --warnings-as-errors && mix test
 cd assets && npm run typecheck && npm test
+```
+
+**Full Stack with Mobile:**
+```bash
+mix compile --warnings-as-errors && mix test
+cd assets && npm run typecheck && npm test
+cd mobile && npm run typecheck && npm test
 ```
 
 If verification fails:

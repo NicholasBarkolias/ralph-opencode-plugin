@@ -1,6 +1,21 @@
 # Ralph Wiggum Plugin for OpenCode
 
-An autonomous development loop plugin for Phoenix + React projects.
+An autonomous development loop plugin for Phoenix + React + Expo projects using the **TanStack ecosystem**.
+
+## TanStack Ecosystem
+
+This plugin enforces the use of TanStack packages for consistency and type-safety:
+
+### Web (React)
+- **TanStack Router** - File-based, type-safe routing
+- **TanStack Query** - Server state management and data fetching
+- **TanStack Form** - Type-safe form management
+- **TanStack Table** - Headless table/datagrid logic
+
+### Mobile (Expo)
+- **Expo Router** - File-based routing (official Expo router)
+- **TanStack Query** - Server state management and data fetching
+- **TanStack Form** - Type-safe form management
 
 ## Installation
 
@@ -30,6 +45,7 @@ Once installed, the following commands are available in OpenCode:
 | `/ralph-plan <feature>` | Create a detailed plan.md for Ralph to execute |
 | `/ralph-phoenix <task>` | Phoenix-focused development loop |
 | `/ralph-react <task>` | React/TypeScript-focused development loop |
+| `/ralph-expo <task>` | React Native + Expo-focused development loop |
 | `/ralph-full <feature>` | Full-stack feature implementation loop |
 
 ## Usage
@@ -52,16 +68,28 @@ Once installed, the following commands are available in OpenCode:
 /ralph-phoenix Add authentication using phx.gen.auth
 ```
 
-### React-Only Development
+### React-Only Development (TanStack Router + Query)
 
 ```
-/ralph-react Build dashboard components for task analytics
+/ralph-react Build dashboard with TanStack Table for task analytics
 ```
 
-### Full Feature Development
+### Expo/React Native Development (Expo Router + TanStack Query)
 
 ```
-/ralph-full Real-time task updates using Phoenix Channels and React hooks
+/ralph-expo Build task management app with TanStack Query
+```
+
+### Full Feature Development (Phoenix + TanStack)
+
+```
+/ralph-full Real-time task updates using Phoenix Channels and TanStack Query
+```
+
+### Full Stack with Mobile
+
+```
+/ralph-full Real-time task updates with mobile app --mobile true
 ```
 
 ## How It Works
@@ -94,10 +122,12 @@ ralph-plugin/
 │   │   ├── ralph-plan.md  # Planning command
 │   │   ├── ralph-phoenix.md
 │   │   ├── ralph-react.md
+│   │   ├── ralph-expo.md
 │   │   └── ralph-full.md
 │   ├── AGENTS.md          # Core guidelines
 │   ├── PHOENIX.md         # Phoenix patterns
-│   └── REACT.md           # React patterns
+│   ├── REACT.md           # React + TanStack patterns
+│   └── EXPO.md            # Expo + TanStack Query patterns
 ├── agents/                # Reference copies
 ├── commands/              # Original spec format
 ├── scripts/               # Shell scripts for CI/automation
@@ -127,6 +157,13 @@ npm run lint
 npm test
 ```
 
+### Expo/React Native
+```bash
+npm run typecheck
+npm run lint
+npm test
+```
+
 ## Commit Convention
 
 Format: `[area] brief description`
@@ -135,6 +172,10 @@ Format: `[area] brief description`
 - `[ecto]` - Migrations/schemas
 - `[api]` - Controllers/routes
 - `[react]` - React components
+- `[expo]` - Expo/React Native code
+- `[react-native]` - React Native specific code
+- `[tanstack]` - TanStack-specific changes (Query, Router, Form, Table)
+- `[navigation]` - Router/navigation code
 - `[typescript]` - Type definitions
 - `[ui]` - UI components
 
@@ -149,7 +190,7 @@ For automation or CI environments:
 Arguments:
 1. Task description (required)
 2. Max iterations (default: 25)
-3. Stack: phoenix|react|full (default: full)
+3. Stack: phoenix|react|expo|full (default: full)
 
 ## Cost Considerations
 
